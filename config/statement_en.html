@@ -1,0 +1,111 @@
+<div id="statement_back" class="statement_back" style="display:none"></div>
+<div class="statement-body">
+    <div style="color:#7cc576;background-color:rgba( 124 , 197 , 118 , 0.1 );padding:20px;margin-right:15px;margin-left:15px;margin-bottom:10px;text-align:left">
+        <span class="statement-league-alert-content">
+            This is a port of the board game <a href="https://en.wikipedia.org/wiki/Breakthrough_(board_game)">Breakthrough</a>
+        </span>
+    </div>
+
+  <!-- GOAL -->
+  <div class="statement-section statement-goal">
+    <h1>
+      <span class="icon icon-goal">&nbsp;</span>
+      <span>The Goal</span>
+    </h1>
+    <div class="statement-goal-content">
+        The goal of the game is to reach first the opponent's home row.
+    </div>
+  </div>
+  <!-- RULES -->
+  <div class="statement-section statement-rules">
+    <h1>
+      <span class="icon icon-rules">&nbsp;</span>
+      <span>Rules</span>
+    </h1> 
+    <div>
+      <div class="statement-rules-content">The game is a two player game played on a 8x8 board, each player has 16 pieces.<br>
+        At the starting position, the two bottom rows (for White) and the two top rows (for Black) of the board are filled with pieces. White makes the first move.<br>
+        <br>
+        Movement works as follow:
+        <ul>
+          <li>A piece may move one space straight or diagonally forward if the target square is empty.</li>
+          <li>A piece may move into a square containing an opponent's piece if and only if that square is one step diagonally forward. The opponent's piece is removed and the player's piece replaces it.</li>
+          <li>Note that capturing is not compulsory, nor is it "chained" as in checkers.</li>
+        </ul>
+          Because pawns can only move forward, draws are impossible in Breakthrough games.
+          A game may last theoretically up to <const>209</const> moves but, in practice, a game is generally decided before <const>100</const> moves are played.
+      </div>
+    </div>
+  </div>
+    <!-- Victory conditions -->
+    <div class="statement-victory-conditions">
+        <div class="icon victory"></div>
+        <div class="blk">
+            <div class="title">Victory conditions</div>
+            <div class="text">
+                <ul style="padding-top:0; padding-bottom: 0;">
+                    <li>You reach first the opponent's home row. <li>You capture all opponent pieces.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Lose conditions -->
+    <div class="statement-lose-conditions">
+        <div class="icon lose"></div>
+        <div class="blk">
+            <div class="title">Defeat Conditions</div>
+            <div class="text">
+                <ul style="padding-top:0; padding-bottom: 0;">
+                    <li>Your program does not provide a valid command in time.</li>
+                    <li>You fail to protect your home row.</li>
+                    <li>You lose all your pieces.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  <!-- PROTOCOL -->
+  <div class="statement-section statement-protocol">
+    <h1>
+      <span class="icon icon-protocol">&nbsp;</span>
+      <span>Game Input</span>
+    </h1>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Input for one game turn</div>
+      <div class="text">
+         <p><span class="statement-lineno">First line: </span>The last move of your opponent or "None" if you start the game</p>
+         <p><span class="statement-lineno">Next line: </span>Number of legal moves as an integer </p>
+         <p><span class="statement-lineno">Next lines: </span>The legal moves as strings</p>
+       </div>
+     </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Output</div>
+      <div class="text">
+        <p><span class="statement-lineno">A single line: </span>Your move and an additional short message separated by a whitespace</p>
+        <br>
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Move encoding</div>
+      <div class="text">
+        <br>A move is defined by its starting square and ending square. Squares are described using chess notation.<br>Example move: c2c3
+        <br>
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+        <div class="title">Constraints</div>
+        <div class="text">
+            <br>The response time for the first turn is ≤ <const>1000</const> milliseconds.
+            <br>The response time for the following turns is ≤ <const>100</const> milliseconds.
+        </div>
+        </div>
+    </div>
+  </div>
+</div>

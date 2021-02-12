@@ -1,0 +1,13 @@
+gameloop
+read opponentMove:string(4)
+read legalMoves:int
+loop legalMoves read moveString:word(10)
+write MOVE
+
+STATEMENT
+Rush to the opponent's row
+
+INPUT
+opponentMove: last move played or "None"
+legalMoves: number of legal moves
+moveString: a legal move

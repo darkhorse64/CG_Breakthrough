@@ -1,0 +1,109 @@
+<div id="statement_back" class="statement_back" style="display:none"></div>
+<div class="statement-body">
+    <div style="color:#7cc576;background-color:rgba( 124 , 197 , 118 , 0.1 );padding:20px;margin-right:15px;margin-left:15px;margin-bottom:10px;text-align:left">
+        <span class="statement-league-alert-content">
+            Une implémentation du jeu de plateau <a href="https://en.wikipedia.org/wiki/Breakthrough_(board_game)">Breakthrough</a>
+        </span>
+    </div>
+
+  <!-- GOAL -->
+  <div class="statement-section statement-goal">
+    <h1>
+      <span class="icon icon-goal">&nbsp;</span>
+      <span>Objectif</span>
+    </h1>
+    <div class="statement-goal-content">
+        Le but du jeu est d'atteindre le premier la ligne de départ de l'adversaire.
+    </div>
+  </div>
+  <!-- RULES -->
+  <div class="statement-section statement-rules">
+    <h1>
+      <span class="icon icon-rules">&nbsp;</span>
+      <span>Règles</span>
+    </h1> 
+    <div>
+      <div class="statement-rules-content">Ce jeu se joue à deux sur un échiquier standard (8x8 cases).
+        Dans la position de départ, chaque joueur dispose de 16 pions, les Blancs occupent les deux lignes du bas et les Noirs les deux lignes du haut. Les Blancs commencent.<br>
+        <br>
+        Les pions se déplacent de la façon suivante:
+        <ul>
+          <li>Un pion se déplace toujours vers l'avant d'une case à la fois soit en diagonale, soit tout droit si la case est vide.
+          <li>Un pion peut aussi se déplacer sur une case occupée par l'adversaire mais seulement en diagonale et toujours d'une seule case. Le pion adverse est alors capturé.</li>
+          <li>Il est à noter qu'une capture n'est jamais obligatoire et qu'on ne peut pas enchaîner les captures comme au jeu de dames.</li>
+        </ul>
+          Du fait que les pions peuvent seulement aller de l'avant, les parties nulles sont impossibles à Breakthrough.
+          Une partie peut durer théoriquement jusqu'à <const>209</const> coups mais, en pratique, une partie est généralement décidée en moins de <const>100</const> coups.
+      </div>
+    </div>
+  </div>
+    <!-- Victory conditions -->
+    <div class="statement-victory-conditions">
+        <div class="icon victory"></div>
+        <div class="blk">
+            <div class="title">Conditions de victoire</div>
+            <div class="text">
+                <ul style="padding-top:0; padding-bottom: 0;">
+                    <li>Vous atteignez le premier la ligne de départ de l'adversaire. <li>Vous capturez tous les pions de l'adversaire.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Lose conditions -->
+    <div class="statement-lose-conditions">
+        <div class="icon lose"></div>
+        <div class="blk">
+            <div class="title">Conditions de défaite</div>
+            <div class="text">
+                <li>Votre programme n'a pas fourni une commande valide dans le temps imparti.</li>
+                <li>Vous n'avez pas réussi à protéger votre ligne de départ.</li>
+                <li>Vous avez perdu tous vos pions.</li>
+            </div>
+        </div>
+    </div>
+  <!-- PROTOCOL -->
+  <div class="statement-section statement-protocol">
+    <h1>
+      <span class="icon icon-protocol">&nbsp;</span>
+      <span>Entrées du jeu</span>
+    </h1>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Entrées pour un tour de jeu</div>
+      <div class="text">
+         <p><span class="statement-lineno">Première ligne: </span>Le dernier coup joué par l'adversaire ou "None" si vous commencez la partie</p>
+         <p><span class="statement-lineno">La ligne suivante: </span>Le nombre de coups légaux</p>
+         <p><span class="statement-lineno">Les lignes suivantes: </span>Une chaîne de caractères par coup légal</p>
+       </div>
+     </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Sortie pour un tour de jeu</div>
+      <div class="text">
+        <p><span class="statement-lineno">Une unique ligne: </span>Votre coup suivi éventuellement d'un court message</p>
+        <br>
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Format d'un coup</div>
+      <div class="text">
+        <br>Un coup est défini par sa case de départ et sa case d'arrivée. Les cases sont décrites en notation échiquéenne. <br>Un exemple de coup: c2c3
+        <br>
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+        <div class="title">Contraintes de temps</div>
+        <div class="text">
+            <br>Le temps de réponse pour le premier coup est ≤ <const>1000</const> milliseconds.
+            <br>Pour les autres tours, le temps de réponse est ≤ <const>100</const> milliseconds.
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
