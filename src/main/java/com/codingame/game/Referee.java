@@ -188,7 +188,7 @@ public class Referee extends AbstractReferee {
     	int piece_index = -1;
     	for(int i = 0;i<32;i++)
     	{
-    		if(board_piece[i].getX() == BOARD_X + BOARD_OFFSET_X + c*BOARD_DX && board_piece[i].getY() == BOARD_Y + BOARD_OFFSET_Y + r*BOARD_DY)
+    		if(board_piece[i].getX() == BOARD_X + BOARD_OFFSET_X + c*BOARD_DX + BOARD_DX/4 && board_piece[i].getY() == BOARD_Y + BOARD_OFFSET_Y + r*BOARD_DY + 3*BOARD_DY/8)
     		{
     			piece_index = i;
     		}
@@ -204,26 +204,27 @@ public class Referee extends AbstractReferee {
 			int remove_piece_index = -1;
 			for(int i = 0;i<32;i++)
 			{
-				if(board_piece[i].getX() == BOARD_X + BOARD_OFFSET_X + next_c*BOARD_DX && board_piece[i].getY() == BOARD_Y + BOARD_OFFSET_Y + next_r*BOARD_DY)
+				if(board_piece[i].getX() == BOARD_X + BOARD_OFFSET_X + next_c*BOARD_DX + BOARD_DX/4 && board_piece[i].getY() == BOARD_Y + BOARD_OFFSET_Y + next_r*BOARD_DY + 3*BOARD_DY/8)
 				{
 					remove_piece_index = i;
 				}
 			}
 
-			//remove piece
-			int offx = 0;
-			int offy = 0;
+			//animate captured piece to its player's sidebar icon, then hide it
+			int targetPlayer = (board[next_r][next_c] == 'w') ? 0 : 1;
+			int targetX = (targetPlayer == 0) ? 220 : 1670;
+			int targetY = 430;
 
-			board_piece[remove_piece_index]
-					.setVisible(false)
-					.setX(offx)
-					.setY(offy);
+			graphicEntityModule.commitEntityState(0, board_piece[remove_piece_index]);
+			board_piece[remove_piece_index].setX(targetX).setY(targetY);
+			graphicEntityModule.commitEntityState(0.9, board_piece[remove_piece_index]);
+			board_piece[remove_piece_index].setVisible(false);
 		}
 
 		//move boardpiece
 		board_piece[piece_index]
-				.setX(BOARD_X + BOARD_OFFSET_X + next_c*BOARD_DX)
-				.setY(BOARD_Y + BOARD_OFFSET_Y + next_r*BOARD_DY);
+				.setX(BOARD_X + BOARD_OFFSET_X + next_c*BOARD_DX + BOARD_DX/4)
+				.setY(BOARD_Y + BOARD_OFFSET_Y + next_r*BOARD_DY + 3*BOARD_DY/8);
 
 
     	//put down piece on board
@@ -316,9 +317,11 @@ public class Referee extends AbstractReferee {
                 .setAnchor(0.5);
         
         graphicEntityModule.createSprite()
-				.setImage("white_pawn.png")
+				.setImage("White_Rook.png")
 				.setX(avatarx+120)
 				.setY(avatary+350)
+				.setBaseWidth(108)
+				.setBaseHeight(108)
 				.setAnchor(0.5);
 
 		capture_message[player_num] = graphicEntityModule.createText("Captured pawns: 0")
@@ -354,9 +357,11 @@ public class Referee extends AbstractReferee {
         	.setAnchor(0.5);
 
         graphicEntityModule.createSprite()
-			.setImage("black_pawn.png")
+			.setImage("Black_Rook.png")
 			.setX(avatarx+120)
 			.setY(avatary+350)
+			.setBaseWidth(120)
+			.setBaseHeight(120)
 			.setAnchor(0.5);
 
 		capture_message[player_num] = graphicEntityModule.createText("Captured pawns: 0")
@@ -382,9 +387,12 @@ public class Referee extends AbstractReferee {
                 {
                     board[row][col] = 'b';
                     board_piece[next_piece_index] = graphicEntityModule.createSprite()
-                    		.setImage("black_pawn.png")
-							.setX(BOARD_X + BOARD_OFFSET_X + col*BOARD_DX)
-							.setY(BOARD_Y + BOARD_OFFSET_Y + row*BOARD_DY);
+                    		.setImage("Black_Rook.png")
+							.setX(BOARD_X + BOARD_OFFSET_X + col*BOARD_DX + BOARD_DX/4)
+							.setY(BOARD_Y + BOARD_OFFSET_Y + row*BOARD_DY + 3*BOARD_DY/8)
+							.setBaseWidth(108)
+							.setBaseHeight(108)
+							.setAnchor(0.5);
                     next_piece_index++;
                     		
                 }
@@ -392,9 +400,12 @@ public class Referee extends AbstractReferee {
                 {
                     board[row][col] = 'w';
                     board_piece[next_piece_index] = graphicEntityModule.createSprite()
-                    		.setImage("white_pawn.png")
-                    		.setX(BOARD_X + BOARD_OFFSET_X + col*BOARD_DX)
-                    		.setY(BOARD_Y + BOARD_OFFSET_Y + row*BOARD_DY);
+                    		.setImage("White_Rook.png")
+                    		.setX(BOARD_X + BOARD_OFFSET_X + col*BOARD_DX + BOARD_DX/4)
+                    		.setY(BOARD_Y + BOARD_OFFSET_Y + row*BOARD_DY + 3*BOARD_DY/8)
+                    		.setBaseWidth(108)
+                    		.setBaseHeight(108)
+                    		.setAnchor(0.5);
                     next_piece_index++;
                     
                 }
